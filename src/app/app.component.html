@@ -1,0 +1,20 @@
+<div class="controls" *ngIf="isEmbedded; else embedReportFlow">
+  <div class="display-message" #status>{{ displayMessage }}</div>
+</div>
+
+<ng-template #embedReportFlow>
+  <div class="display-message position" #status>
+    <label>{{ displayMessage }}</label>
+    <button (click)="embedReport()" id="embed-action" #embedReportBtn>
+      Embed Report
+    </button>
+  </div>
+</ng-template>
+
+<powerbi-report
+  [embedConfig]="reportConfig"
+  [cssClassName]="reportClass"
+  [phasedEmbedding]="phasedEmbeddingFlag"
+  [eventHandlers]="eventHandlersMap"
+>
+</powerbi-report>
